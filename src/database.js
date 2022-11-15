@@ -10,4 +10,8 @@ const sequelize = new Sequelize(config[process.env.NODE_ENV || "development"]);
   .map((defineModel) => defineModel(sequelize))
   .forEach((associateModel) => associateModel(sequelize.models));
 
+export const truncate = () => {
+  return sequelize.truncate({ cascade: true });
+};
+
 export default sequelize;
